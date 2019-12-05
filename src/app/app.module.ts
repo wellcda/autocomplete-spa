@@ -3,16 +3,17 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CountrySearchComponent } from './country-search/country-search.component';
-
+import { CountrySearchModule } from './components/country-search/country-search.module';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
-    CountrySearchComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    CountrySearchModule
   ],
   providers: [],
   bootstrap: [AppComponent]
