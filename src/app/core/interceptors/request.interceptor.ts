@@ -16,10 +16,13 @@ export class RequestInterceptor implements HttpInterceptor {
   constructor() { }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    const url = `localhost:8000/api${request.url}`;
+    const url = `${window.location.origin}/api${request.url}`;
 
     request = request.clone({
       url,
+      setHeaders: {
+        Accept: 'application/json'
+      }
     });
 
     return next.handle(request).pipe(
