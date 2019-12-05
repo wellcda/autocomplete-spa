@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CountryService, Country } from '../../services/country.service';
+import { CountryService, Country } from '../../core/services/country.service';
 
 @Component({
   selector: 'app-country-search',
@@ -9,10 +9,14 @@ import { CountryService, Country } from '../../services/country.service';
 export class CountrySearchComponent implements OnInit {
   public text: string;
   public results: any;
+  public countries: any;
 
   constructor(private countryService: CountryService) { }
 
   ngOnInit() {
+    this.countryService.search('a').subscribe(data => {
+      this.countries = data;
+    });
   }
 
   search(event) {
