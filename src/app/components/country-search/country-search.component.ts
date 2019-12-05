@@ -8,20 +8,16 @@ import { CountryService, Country } from '../../core/services/country.service';
 })
 export class CountrySearchComponent implements OnInit {
   public text: string;
-  public results: any;
-  public countries: any;
+  public countries: Country[];
 
   constructor(private countryService: CountryService) { }
 
   ngOnInit() {
-    this.countryService.search('a').subscribe(data => {
-      this.countries = data;
-    });
   }
 
   search(event) {
     this.countryService.search(event.query).subscribe(data => {
-      this.results = data;
+      this.countries = data;
     });
   }
 
